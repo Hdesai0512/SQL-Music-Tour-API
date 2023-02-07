@@ -29,17 +29,19 @@ bands.get('/:id', async (req, res) => {
 // Update A Band
 bands.put('/:id', async (req, res) =>{
     try {
-        const updateBands= await Band.update(req.body, {
+        const updateBands = await Band.update(req.body, {
             where: {
                 band_id:req.params.id
             }
         })
         res.status(200).json ({
             message: `Successfully update ${updatedBands} band(s)`
-        })
+            })
+    } catch (err){
+        res.status(500).json(err)
     }
 }
 )
 
 // EXPORT
-module.eports = bands
+module.exports = bands
